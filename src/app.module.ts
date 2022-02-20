@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import {feedObjModule } from './FeedObj/feedObj.module'
 import { userModule } from './user/user.module';
+import { authModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { userModule } from './user/user.module';
       autoLoadEntities: true,
       }),
       feedObjModule,
-      userModule
+      userModule,
+      authModule
   ],
   controllers: [AppController],
   providers: [AppService],

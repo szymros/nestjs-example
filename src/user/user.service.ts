@@ -12,10 +12,14 @@ export class userService{
         ){}
 
     async getUsers() : Promise<User[]>{
-        return this.userRepo.find();
+        return this.userRepo.find({relations:['feedObjs']});
     }
 
     async createUser(newUser: User) : Promise<User>{
         return this.userRepo.save(newUser);
+    }
+
+    async findOne(username: string) : Promise<User | undefined>{
+        return this.userRepo.findOne({username : username}, {relations:['feedObjs']});
     }
 }
