@@ -26,4 +26,12 @@ export class feedObjService{
     async getOne(id:number): Promise<feedObj>{
         return await this.feedObjRepo.findOne(id);
     }
+
+    async updateObj(id:number, newobj: feedObj){
+        return this.feedObjRepo.update({id:id},newobj);
+    }
+
+    async deleteObj(id:number){
+        return this.feedObjRepo.delete({id:id});
+    }
 }

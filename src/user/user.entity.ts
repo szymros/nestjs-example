@@ -1,19 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from "typeorm";
 import { feedObj } from './../FeedObj/feedObj.entity'
+import { Exclude } from 'class-transformer'
 
-@Entity()
+@Entity('users')
 export class User{
 
+    @Exclude()
     @PrimaryGeneratedColumn()
     id: Number;
 
     @Column()
     username: string;
 
+    @Exclude()
     @Column()
     password: string;
 
-    @Column()
+    @Column()   
     name: string;
 
     @Column()
@@ -21,5 +24,9 @@ export class User{
 
     @OneToMany( () => feedObj, obj => obj.owner_id)
     feedObjs: feedObj[];
+
+    @ManyToMany(() => User)
+    @JoinTable({joinColumn: {name: 'users_id_1'}})
+    friends: User[];
 
 }

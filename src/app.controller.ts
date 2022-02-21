@@ -10,13 +10,6 @@ export class AppController {
     private readonly authservice: authService
     ) {}
 
-
-  @UseGuards(JwtAuthGuard)
-  @Get()
-  getHello(): string {
-    return "hello";
-  }
-
   @UseGuards(AuthGuard('local'))
   @Post('auth/login')
   async login(@Request() req){
