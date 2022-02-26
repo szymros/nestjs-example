@@ -1,37 +1,37 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { feedObj } from "./feedObj.entity";
-import { userService } from "src/user/user.service";
+import { FeedObj } from "./feedObj.entity";
+import { UserService } from "src/user/user.service";
 
 @Injectable()
-export class feedObjService{
+export class FeedObjService{
 
     constructor(
-        @InjectRepository(feedObj)
-        private feedObjRepo: Repository<feedObj>,
-        private readonly userservice: userService
+        @InjectRepository(FeedObj)
+        private FeedObjRepo: Repository<FeedObj>,
+        private readonly UserService: UserService
         ){}
 
-    async createFeedObj(newobj: feedObj, username: string): Promise<feedObj>{
-        const user = await this.userservice.findOne(username);
+    async createFeedObj(newobj: FeedObj, username: string): Promise<FeedObj>{
+        const user = await this.UserService.findOne(username);
         newobj.owner_id = user;
-        return await this.feedObjRepo.save(newobj);
+        return await this.FeedObjRepo.save(newobj);
     }
 
-    async getFeedObj(): Promise<feedObj[]>{
-        return await this.feedObjRepo.find();
+    async getFeedObj(): Promise<FeedObj[]>{
+        return await this.FeedObjRepo.find();
     }
 
-    async getOne(id:number): Promise<feedObj>{
-        return await this.feedObjRepo.findOne(id);
+    async getOne(id:number): Promise<FeedObj>{
+        return await this.FeedObjRepo.findOne(id);
     }
 
-    async updateObj(id:number, newobj: feedObj){
-        return this.feedObjRepo.update({id:id},newobj);
+    async updateObj(id:number, newobj: FeedObj){
+        return this.FeedObjRepo.update({id:id},newobj);
     }
 
     async deleteObj(id:number){
-        return this.feedObjRepo.delete({id:id});
+        return this.FeedObjRepo.delete({id:id});
     }
 }

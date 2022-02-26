@@ -1,39 +1,39 @@
 import { Controller, Get, Post, Body, UseGuards, Request, Put, Param, UseInterceptors, ClassSerializerInterceptor, Req } from "@nestjs/common";
-import { userService } from "./user.service";
+import { UserService } from "./user.service";
 import { User } from "./user.entity";
-import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
+import { JwtAuthGuard } from "./../auth/jwt-auth.guard";
 
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('user')
-export class userController{
-    constructor(private readonly userService: userService){}
+export class UserController{
+    constructor(private readonly UserService: UserService){}
 
     @Get()
     getUsers(){
-        return this.userService.getUsers();
+        return this.UserService.getUsers();
     }
 
     @Get(':username')
     getUser(@Param('username') username: string){
-        return this.userService.findOne(username);
+        return this.UserService.findOne(username);
     }
     
 
     @Post()
     createUser(@Body() new_user: User){
-        return this.userService.createUser(new_user);
+        return this.UserService.createUser(new_user);
     }
 
     @UseGuards(JwtAuthGuard)
     @Put()
     updateUser(@Request() req,@Body() user: User){
-        return this.userService.updateUser(req.user.username,user)
+        return this.UserService.updateUser(req.user.username,user)
     }
 
     @UseGuards(JwtAuthGuard)
     @Put(':friend')
     addFriend(@Param('friend') friend:string, @Request() req){
-        return this.userService.addFriend(req.user.username, friend);
+        return this.UserService.addFriend(req.user.username, friend);
     }
 
 }

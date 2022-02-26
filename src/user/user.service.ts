@@ -3,17 +3,17 @@ import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 
 import { User } from './user.entity'
-import { userModule } from "./user.module";
+import { UserModule } from "./user.module";
 
 @Injectable()
-export class userService{
+export class UserService{
     constructor(
         @InjectRepository(User)
         private userRepo: Repository<User>
         ){}
 
     async getUsers() : Promise<User[]>{
-        return this.userRepo.find({relations:['feedObjs', 'friends']});
+        return this.userRepo.find({relations:['FeedObjs', 'friends']});
     }
 
     async createUser(newUser: User) : Promise<User>{
@@ -21,7 +21,7 @@ export class userService{
     }
 
     async findOne(username: string) : Promise<User | undefined>{
-        return this.userRepo.findOne({username : username}, {relations:['feedObjs']});
+        return this.userRepo.findOne({username : username}, {relations:['FeedObjs']});
     }
 
     async updateUser(username:string,updatedUser: User){

@@ -3,9 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import {feedObjModule } from './FeedObj/feedObj.module'
-import { userModule } from './user/user.module';
-import { authModule } from './auth/auth.module';
+import {FeedObjModule } from './FeedObj/feedObj.module'
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
@@ -17,9 +17,9 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
       synchronize: true,
       autoLoadEntities: true,
       }),
-      feedObjModule,
-      userModule,
-      authModule
+      FeedObjModule,
+      UserModule,
+      AuthModule
   ],
   controllers: [AppController],
   providers: [

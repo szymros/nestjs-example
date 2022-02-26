@@ -1,15 +1,15 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { feedObjService } from './feedObj.service';
-import { feedObjController } from './feedObj.controller';
-import { feedObj } from './feedObj.entity'
-import { userModule } from "src/user/user.module";
-import { authModule } from "src/auth/auth.module";
+import { FeedObjService } from './feedObj.service';
+import { FeedObjController } from './feedObj.controller';
+import { FeedObj } from './feedObj.entity'
+import { UserModule } from "src/user/user.module";
+import { AuthModule } from "src/auth/auth.module";
 
 @Module({
-    imports : [ TypeOrmModule.forFeature([feedObj]), userModule, authModule],
-    controllers: [feedObjController],
-    providers : [feedObjService]
+    imports : [ TypeOrmModule.forFeature([FeedObj]), UserModule, AuthModule],
+    controllers: [FeedObjController],
+    providers : [FeedObjService]
 })
-export class feedObjModule{}
+export class FeedObjModule{}

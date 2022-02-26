@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from "typeorm";
-import { feedObj } from './../FeedObj/feedObj.entity'
+import { FeedObj } from './../FeedObj/FeedObj.entity'
 import { Exclude } from 'class-transformer'
 
 @Entity('users')
@@ -22,8 +22,8 @@ export class User{
     @Column()
     second_name: string;
 
-    @OneToMany( () => feedObj, obj => obj.owner_id)
-    feedObjs: feedObj[];
+    @OneToMany( () => FeedObj, obj => obj.owner_id)
+    FeedObjs: FeedObj[];
 
     @ManyToMany(() => User)
     @JoinTable({joinColumn: {name: 'users_id_1'}})
