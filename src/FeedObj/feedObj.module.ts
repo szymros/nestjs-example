@@ -4,8 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { FeedObjService } from './feedObj.service';
 import { FeedObjController } from './feedObj.controller';
 import { FeedObj } from './feedObj.entity'
-import { UserModule } from "src/user/user.module";
-import { AuthModule } from "src/auth/auth.module";
+import { UserModule } from "./../user/user.module";
+import { AuthModule } from "./../auth/auth.module";
 
 @Module({
     imports : [ TypeOrmModule.forFeature([FeedObj]), UserModule, AuthModule],

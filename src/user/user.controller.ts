@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, UseGuards, Request, Put, Param, UseInterce
 import { UserService } from "./user.service";
 import { User } from "./user.entity";
 import { JwtAuthGuard } from "./../auth/jwt-auth.guard";
+import { CreateUserDto } from "./create-user.dto";
 
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('user')
@@ -20,7 +21,7 @@ export class UserController{
     
 
     @Post()
-    createUser(@Body() new_user: User){
+    createUser(@Body() new_user: CreateUserDto){
         return this.UserService.createUser(new_user);
     }
 

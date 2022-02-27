@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from "typeorm";
-import { FeedObj } from './../FeedObj/FeedObj.entity'
+import { FeedObj } from './../FeedObj/feedObj.entity'
 import { Exclude } from 'class-transformer'
 
 @Entity('users')

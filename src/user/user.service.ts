@@ -4,6 +4,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 
 import { User } from './user.entity'
 import { UserModule } from "./user.module";
+import { CreateUserDto } from "./create-user.dto";
 
 @Injectable()
 export class UserService{
@@ -16,7 +17,7 @@ export class UserService{
         return this.userRepo.find({relations:['FeedObjs', 'friends']});
     }
 
-    async createUser(newUser: User) : Promise<User>{
+    async createUser(newUser: CreateUserDto) : Promise<User>{
         return this.userRepo.save(newUser);
     }
 

@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, Request, UseGuards, UseInterceptors, ClassSerializerInterceptor, Put, Delete } from "@nestjs/common";
 import { FeedObjService } from './feedObj.service'
 import { FeedObj } from "./feedObj.entity";
-import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
+import { JwtAuthGuard } from "./../auth/jwt-auth.guard";
 
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('feed')
