@@ -10,6 +10,7 @@ import { AuthModule } from "./../auth/auth.module";
 @Module({
     imports : [ TypeOrmModule.forFeature([FeedObj]), UserModule, AuthModule],
     controllers: [FeedObjController],
-    providers : [FeedObjService]
+    providers : [FeedObjService],
+    exports: [FeedObjService]
 })
 export class FeedObjModule{}

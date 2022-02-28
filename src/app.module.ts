@@ -7,6 +7,7 @@ import {FeedObjModule } from './FeedObj/feedObj.module'
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
       }),
       FeedObjModule,
       UserModule,
-      AuthModule
+      AuthModule,
+      CommentModule
   ],
   controllers: [AppController],
   providers: [
